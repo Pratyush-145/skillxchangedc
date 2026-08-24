@@ -1,0 +1,2196 @@
+<html lang="en"><head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SkillXChange — Login</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+
+<style>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+
+    --bg: #060912;
+
+    --card: rgba(15, 22, 38, 0.78);
+
+    --border: rgba(255, 255, 255, 0.09);
+
+    --primary: #7657ff;
+
+    --primary-light: #a18cff;
+
+    --text: #ffffff;
+
+    --muted: #8c97aa;
+
+    --input: rgba(255, 255, 255, 0.045);
+
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+
+    min-height: 100vh;
+
+    font-family: "Inter", sans-serif;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    overflow-x: hidden;
+
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: -1;
+
+}
+
+
+.background::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(105, 72, 255, .20),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(0, 170, 255, .13),
+            transparent 30%
+        );
+
+    pointer-events: none;
+
+}
+
+
+.orb {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(110px);
+
+    opacity: .18;
+
+}
+
+
+.orb-one {
+
+    width: 500px;
+
+    height: 500px;
+
+    background: #6845ff;
+
+    top: -220px;
+
+    left: -180px;
+
+}
+
+
+.orb-two {
+
+    width: 450px;
+
+    height: 450px;
+
+    background: #009dff;
+
+    right: -150px;
+
+    bottom: -200px;
+
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.auth-container {
+
+    min-height: 100vh;
+
+    display: grid;
+
+    grid-template-columns: 1.05fr .95fr;
+
+}
+
+
+/* =========================
+   LEFT SIDE
+========================= */
+
+.brand-section {
+
+    padding: 55px 8%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    letter-spacing: -.6px;
+
+}
+
+
+.brand-name-x {
+
+    color: var(--primary-light);
+
+}
+
+
+.brand-icon {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #7050f5,
+            #a083ff
+        );
+
+    box-shadow:
+
+        0 10px 35px
+        rgba(118, 87, 255, .35);
+
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.brand-content {
+
+    max-width: 590px;
+
+}
+
+
+.eyebrow {
+
+    color: #a18cff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+
+.brand-content h1 {
+
+    margin: 22px 0;
+
+    font-size: clamp(55px, 6vw, 90px);
+
+    line-height: .94;
+
+    letter-spacing: -5px;
+
+}
+
+
+.gradient-text {
+
+    display: block;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #927cff,
+            #c9c0ff
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+
+.brand-description {
+
+    max-width: 500px;
+
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.feature-list {
+
+    margin-top: 45px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+
+.feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.feature-icon {
+
+    width: 43px;
+
+    height: 43px;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #a99bff;
+
+    background: rgba(255,255,255,.045);
+
+    border: 1px solid var(--border);
+
+}
+
+
+.feature strong {
+
+    display: block;
+
+    font-size: 14px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.feature small {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+}
+
+
+.copyright {
+
+    color: #566074;
+
+    font-size: 11px;
+
+}
+
+
+/* =========================
+   RIGHT SIDE
+========================= */
+
+.auth-section {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px;
+
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.auth-card {
+
+    width: 100%;
+
+    max-width: 465px;
+
+    padding: 45px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 28px;
+
+    backdrop-filter: blur(30px);
+
+    -webkit-backdrop-filter: blur(30px);
+
+    box-shadow:
+
+        0 30px 90px rgba(0,0,0,.40);
+
+    animation: cardAppear .7s ease;
+
+}
+
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================
+   MOBILE BRAND
+========================= */
+
+.mobile-brand {
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 11px;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    margin-bottom: 35px;
+
+}
+
+
+/* =========================
+   HEADINGS
+========================= */
+
+.heading h2 {
+
+    font-size: 30px;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.heading p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin-bottom: 28px;
+
+}
+
+
+/* =========================
+   GOOGLE BUTTON
+========================= */
+
+.google-btn {
+
+    width: 100%;
+
+    height: 52px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+
+}
+
+
+.google-btn svg {
+
+    width: 19px;
+
+    height: 19px;
+
+}
+
+
+.google-btn:hover {
+
+    background:
+        rgba(255,255,255,.09);
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(255,255,255,.18);
+
+}
+
+
+.google-btn:disabled {
+
+    opacity: .7;
+
+    cursor: wait;
+
+    transform: none;
+
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 25px 0;
+
+    color: #5b6578;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+.divider::before,
+.divider::after {
+
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: var(--border);
+
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+form {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+form > label {
+
+    color: #cbd1dc;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-wrapper {
+
+    position: relative;
+
+    margin-bottom: 18px;
+
+}
+
+
+.input-wrapper input {
+
+    width: 100%;
+
+    height: 50px;
+
+    padding: 0 45px;
+
+    border-radius: 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background: var(--input);
+
+    color: white;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    transition: .25s;
+
+}
+
+
+.input-wrapper input::placeholder {
+
+    color: #586377;
+
+}
+
+
+.input-wrapper input:focus {
+
+    border-color:
+        rgba(118,87,255,.75);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(118,87,255,.10);
+
+}
+
+
+.input-icon {
+
+    position: absolute;
+
+    left: 17px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #667186;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================
+   PASSWORD EYE
+========================= */
+
+.eye {
+
+    position: absolute;
+
+    right: 14px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    color: #687389;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================
+   LOGIN OPTIONS
+========================= */
+
+.form-options {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin: 2px 0 20px;
+
+    font-size: 11px;
+
+}
+
+
+.form-options a {
+
+    color: #a292ff;
+
+    text-decoration: none;
+
+}
+
+
+.form-options a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+.remember {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #737e91;
+
+}
+
+
+/* =========================
+   PRIMARY BUTTON
+========================= */
+
+.primary-btn {
+
+    width: 100%;
+
+    height: 52px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #7051f5,
+            #967fff
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 12px 30px
+        rgba(118,87,255,.22);
+
+    transition: .25s ease;
+
+}
+
+
+.primary-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+
+        0 17px 38px
+        rgba(118,87,255,.32);
+
+}
+
+
+.primary-btn span {
+
+    font-size: 18px;
+
+}
+
+
+/* =========================
+   SWITCH
+========================= */
+
+.switch {
+
+    text-align: center;
+
+    margin-top: 25px;
+
+    color: #6f7a8d;
+
+    font-size: 12px;
+
+}
+
+
+.switch button {
+
+    border: none;
+
+    background: none;
+
+    color: #a494ff;
+
+    font-family: inherit;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+.switch button:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* =========================
+   TERMS
+========================= */
+
+.terms {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    color: #737e91;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+
+}
+
+
+.terms input {
+
+    margin-top: 2px;
+
+}
+
+
+.terms a {
+
+    color: #9b8aff;
+
+    text-decoration: none;
+
+}
+
+
+.terms a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* =========================
+   HIDDEN
+========================= */
+
+.hidden {
+
+    display: none;
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+#toast {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 30px;
+
+    transform:
+        translateX(-50%)
+        translateY(100px);
+
+    padding: 13px 20px;
+
+    background: #151c2b;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    color: white;
+
+    font-size: 12px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .3s;
+
+    z-index: 999;
+
+}
+
+
+#toast.show {
+
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .auth-container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .brand-section {
+
+        display: none;
+
+    }
+
+    .auth-section {
+
+        padding: 25px;
+
+        min-height: 100vh;
+
+    }
+
+    .mobile-brand {
+
+        display: flex;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .auth-section {
+
+        padding: 15px;
+
+    }
+
+    .auth-card {
+
+        padding: 30px 22px;
+
+        border-radius: 22px;
+
+    }
+
+    .heading h2 {
+
+        font-size: 26px;
+
+    }
+
+}
+
+</style>
+
+<script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.en.zhTT8Br0Ho8.O/m=gapi_iframes/rt=j/sv=1/d=1/ed=1/rs=AHpOoo-7LeULGjNQZRvhdu3G71akb6JY6A/cb=gapi.loaded_0?le=scs" async=""></script><script src="https://apis.google.com/js/api.js?onload=__iframefcb585225" type="text/javascript" charset="UTF-8" gapi_processed="true"></script></head>
+
+
+<body>
+
+
+<!-- BACKGROUND -->
+
+<div class="background">
+
+    <div class="orb orb-one"></div>
+
+    <div class="orb orb-two"></div>
+
+</div>
+
+
+<main class="auth-container">
+
+
+<!-- =========================================
+     LEFT BRAND SECTION
+========================================= -->
+
+<section class="brand-section">
+
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            S
+        </div>
+
+        <div>
+            Skill<span class="brand-name-x">X</span>Change
+        </div>
+
+    </div>
+
+
+    <div class="brand-content">
+
+        <span class="eyebrow">
+            THE FUTURE OF SKILL EXCHANGE
+        </span>
+
+
+        <h1>
+
+            Learn.
+
+            <span class="gradient-text">
+                Share.
+            </span>
+
+            Grow.
+
+        </h1>
+
+
+        <p class="brand-description">
+
+            Connect with people who know what you want to learn
+            and share the skills you already have.
+
+        </p>
+
+
+        <div class="feature-list">
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ↗
+                </div>
+
+                <div>
+
+                    <strong>
+                        Exchange Skills
+                    </strong>
+
+                    <small>
+                        Teach what you know. Learn what you love.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <strong>
+                        Meet Learners
+                    </strong>
+
+                    <small>
+                        Build meaningful connections with people worldwide.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ∞
+                </div>
+
+                <div>
+
+                    <strong>
+                        Grow Together
+                    </strong>
+
+                    <small>
+                        Your knowledge can unlock someone's potential.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 SkillXChange · Learn. Share. Grow.
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     AUTH SECTION
+========================================= -->
+
+<section class="auth-section">
+
+
+<div class="auth-card">
+
+
+    <!-- MOBILE BRAND -->
+
+    <div class="mobile-brand">
+
+        <div class="brand-icon">
+            S
+        </div>
+
+        <div>
+            Skill<span class="brand-name-x">X</span>Change
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         LOGIN FORM
+    ====================================== -->
+
+    <div id="loginForm" class="">
+
+
+        <div class="heading">
+
+            <h2>
+                Welcome back
+            </h2>
+
+            <p>
+                Sign in to continue your learning journey.
+            </p>
+
+        </div>
+
+
+
+        <!-- GOOGLE LOGIN -->
+
+        <button type="button" class="google-btn" onclick="googleLogin()" style="opacity: 1; cursor: pointer;">
+
+            <svg viewBox="0 0 24 24">
+
+                <path fill="#4285F4" d="M21.35 12.27c0-.72-.06-1.41-.18-2.07H12v3.92h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.24z"></path>
+
+                <path fill="#34A853" d="M12 21.75c2.63 0 4.84-.87 6.45-2.34l-3.14-2.45c-.87.58-1.98.92-3.31.92-2.54 0-4.69-1.72-5.46-4.03H3.3v2.52A9.75 9.75 0 0 0 12 21.75z"></path>
+
+                <path fill="#FBBC05" d="M6.54 13.85a5.86 5.86 0 0 1 0-3.7V7.63H3.3a9.75 9.75 0 0 0 0 8.74l3.24-2.52z"></path>
+
+                <path fill="#EA4335" d="M12 6.12c1.43 0 2.72.49 3.73 1.45l2.8-2.8C16.84 3.18 14.63 2.25 12 2.25A9.75 9.75 0 0 0 3.3 7.63l3.24 2.52C7.31 7.84 9.46 6.12 12 6.12z"></path>
+
+            </svg>
+
+            Continue with Google
+
+        </button>
+
+
+
+        <div class="divider">
+
+            <span>
+                OR CONTINUE WITH EMAIL
+            </span>
+
+        </div>
+
+
+
+        <form onsubmit="login(event)">
+
+
+            <label>
+                Email address
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <span class="input-icon">
+                    ✉
+                </span>
+
+                <input type="email" id="loginEmail" placeholder="you@example.com" required="">
+
+            </div>
+
+
+
+            <label>
+                Password
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <span class="input-icon">
+                    ●
+                </span>
+
+                <input type="text" id="loginPassword" placeholder="Enter your password" required="">
+
+                <button type="button" class="eye" onclick="togglePassword('loginPassword', this)">◉</button>
+
+            </div>
+
+
+
+            <div class="form-options">
+
+                <label class="remember">
+
+                    <input type="checkbox">
+
+                    <span>
+                        Remember me
+                    </span>
+
+                </label>
+
+
+                <a href="#" onclick="forgotPassword(event)">
+                    Forgot password?
+                </a>
+
+            </div>
+
+
+
+            <button class="primary-btn" type="submit">
+
+                Sign In
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+        </form>
+
+
+
+        <p class="switch">
+
+            Don't have an account?
+
+            <button onclick="showSignup()">
+                Create account
+            </button>
+
+        </p>
+
+
+    </div>
+
+
+
+    <!-- =====================================
+         SIGNUP FORM
+    ====================================== -->
+
+    <div id="signupForm" class="hidden">
+
+
+        <div class="heading">
+
+            <h2>
+                Create account
+            </h2>
+
+            <p>
+                Start exchanging skills with the world.
+            </p>
+
+        </div>
+
+
+
+        <!-- GOOGLE SIGNUP -->
+
+        <button type="button" class="google-btn" onclick="googleLogin()" style="opacity: 1; cursor: pointer;">
+
+            <svg viewBox="0 0 24 24">
+
+                <path fill="#4285F4" d="M21.35 12.27c0-.72-.06-1.41-.18-2.07H12v3.92h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.24z"></path>
+
+                <path fill="#34A853" d="M12 21.75c2.63 0 4.84-.87 6.45-2.34l-3.14-2.45c-.87.58-1.98.92-3.31.92-2.54 0-4.69-1.72-5.46-4.03H3.3v2.52A9.75 9.75 0 0 0 12 21.75z"></path>
+
+                <path fill="#FBBC05" d="M6.54 13.85a5.86 5.86 0 0 1 0-3.7V7.63H3.3a9.75 9.75 0 0 0 0 8.74l3.24-2.52z"></path>
+
+                <path fill="#EA4335" d="M12 6.12c1.43 0 2.72.49 3.73 1.45l2.8-2.8C16.84 3.18 14.63 2.25 12 2.25A9.75 9.75 0 0 0 3.3 7.63l3.24 2.52C7.31 7.84 9.46 6.12 12 6.12z"></path>
+
+            </svg>
+
+            Sign up with Google
+
+        </button>
+
+
+
+        <div class="divider">
+
+            <span>
+                OR SIGN UP WITH EMAIL
+            </span>
+
+        </div>
+
+
+
+        <form onsubmit="signup(event)">
+
+
+            <label>
+                Full name
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <span class="input-icon">
+                    ●
+                </span>
+
+                <input type="text" id="signupName" placeholder="Your full name" required="">
+
+            </div>
+
+
+
+            <label>
+                Email address
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <span class="input-icon">
+                    ✉
+                </span>
+
+                <input type="email" id="signupEmail" placeholder="you@example.com" required="">
+
+            </div>
+
+
+
+            <label>
+                Password
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <span class="input-icon">
+                    ●
+                </span>
+
+                <input type="password" id="signupPassword" placeholder="Create a password" minlength="8" required="">
+
+                <button type="button" class="eye" onclick="togglePassword('signupPassword', this)">
+                    ◉
+                </button>
+
+            </div>
+
+
+
+            <label>
+                Confirm password
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <span class="input-icon">
+                    ●
+                </span>
+
+                <input type="password" id="confirmPassword" placeholder="Confirm your password" required="">
+
+            </div>
+
+
+
+            <label class="terms">
+
+                <input type="checkbox" id="terms" required="">
+
+                <span>
+
+                    I agree to the
+
+                    <a href="#">
+                        Terms of Service
+                    </a>
+
+                    and
+
+                    <a href="#">
+                        Privacy Policy
+                    </a>
+
+                </span>
+
+            </label>
+
+
+
+            <button class="primary-btn" type="submit">
+
+                Create Account
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+        </form>
+
+
+
+        <p class="switch">
+
+            Already have an account?
+
+            <button onclick="showLogin()">
+                Sign in
+            </button>
+
+        </p>
+
+
+    </div>
+
+
+</div>
+
+</section>
+
+</main>
+
+
+<div id="toast" class="">signInWithEmailAndPassword is not defined</div>
+
+
+
+<!-- =========================================
+     NORMAL JAVASCRIPT
+========================================= -->
+
+<script>
+
+/* =========================
+   LOGIN / SIGNUP SWITCH
+========================= */
+
+function showSignup() {
+
+    document
+        .getElementById("loginForm")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("signupForm")
+        .classList
+        .remove("hidden");
+
+}
+
+
+function showLogin() {
+
+    document
+        .getElementById("signupForm")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("loginForm")
+        .classList
+        .remove("hidden");
+
+}
+
+
+/* =========================
+   PASSWORD VISIBILITY
+========================= */
+
+function togglePassword(inputId, button) {
+
+    const input =
+        document.getElementById(inputId);
+
+
+    if (input.type === "password") {
+
+        input.type = "text";
+
+        button.textContent = "◉";
+
+    }
+
+    else {
+
+        input.type = "password";
+
+        button.textContent = "◉";
+
+    }
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById("toast");
+
+
+    toast.textContent = message;
+
+
+    toast.classList.add("show");
+
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3000);
+
+}
+
+
+/* =========================
+   DEMO EMAIL LOGIN
+========================= */
+
+window.login = async function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    if (!email || !password) {
+        showToast("Please fill all fields.");
+        return;
+    }
+
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        localStorage.setItem("skillUser", JSON.stringify({
+            name: user.displayName || "SkillX User",
+            email: user.email,
+            photo: user.photoURL || ""
+        }));
+
+        showToast("Login Successful!");
+
+    setTimeout(() => {
+
+    // Login karne wale user ka naam save karo
+    localStorage.setItem("sx_user", JSON.stringify({
+        name: username
+    }));
+
+    // Dashboard open karo
+    window.location.href = "dashboard.html";
+
+}, 1000);
+
+    } catch (error) {
+        showToast(error.message);
+    }
+}
+
+/* =========================
+   DEMO SIGNUP
+========================= */
+
+window.signup = async function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("signupName").value.trim();
+    const email = document.getElementById("signupEmail").value.trim();
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const terms = document.getElementById("terms").checked;
+
+    if (!terms) {
+        showToast("Please accept Terms & Privacy Policy.");
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        showToast("Passwords do not match.");
+        return;
+    }
+
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+        await updateProfile(userCredential.user, {
+            displayName: name
+        });
+
+        localStorage.setItem("skillUser", JSON.stringify({
+            name: name,
+            email: email,
+            photo: ""
+        }));
+
+        showToast("Account Created Successfully!");
+
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 1000);
+
+    } catch (error) {
+        showToast(error.message);
+    }
+}
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+function forgotPassword(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document
+        .getElementById("loginEmail")
+        .value
+        .trim();
+
+
+    if (!email) {
+
+        showToast(
+            "Enter your email first."
+        );
+
+        return;
+
+    }
+
+
+    showToast(
+        "Password reset is not connected yet."
+    );
+
+}
+
+</script>
+
+
+
+<!-- =========================================
+     FIREBASE AUTHENTICATION
+========================================= -->
+
+<script type="module">
+
+
+/* =========================
+   IMPORT FIREBASE
+========================= */
+
+import { initializeApp }
+
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+
+    getAuth,
+
+    GoogleAuthProvider,
+
+    signInWithPopup,
+
+    createUserWithEmailAndPassword,
+
+    signInWithEmailAndPassword,
+
+    updateProfile
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+
+/* =========================
+   FIREBASE CONFIG
+========================= */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyCCxKuvUEKoJpjn8P-o7eC8J1b9d-9r_2Q",
+
+    authDomain:
+        "skillxchange-a178b.firebaseapp.com",
+
+    projectId:
+        "skillxchange-a178b",
+
+    storageBucket:
+        "skillxchange-a178b.firebasestorage.app",
+
+    messagingSenderId:
+        "542243771576",
+
+    appId:
+        "1:542243771576:web:e6e6f8997a8e525cb5504d",
+
+    measurementId:
+        "G-25NC671DZY"
+
+};
+
+
+
+/* =========================
+   INITIALIZE FIREBASE
+========================= */
+
+const app =
+    initializeApp(firebaseConfig);
+
+
+const auth =
+    getAuth(app);
+
+
+const provider =
+    new GoogleAuthProvider();
+
+
+
+/* =========================
+   GOOGLE LOGIN STATE
+========================= */
+
+let googleLoginInProgress = false;
+
+
+
+/* =========================
+   GOOGLE LOGIN
+========================= */
+
+window.googleLogin = async function () {
+
+
+    /*
+        Prevent multiple popup requests
+    */
+
+    if (googleLoginInProgress) {
+
+        return;
+
+    }
+
+
+    googleLoginInProgress = true;
+
+
+
+    /*
+        Get both Google buttons
+    */
+
+    const googleButtons =
+        document.querySelectorAll(
+            ".google-btn"
+        );
+
+
+
+    /*
+        Disable buttons
+    */
+
+    googleButtons.forEach(button => {
+
+        button.disabled = true;
+
+        button.style.opacity = "0.7";
+
+        button.style.cursor = "wait";
+
+    });
+
+
+
+    try {
+
+
+        console.log(
+            "Opening Google Login..."
+        );
+
+
+
+        /*
+            Open Google popup
+        */
+
+        const result =
+            await signInWithPopup(
+                auth,
+                provider
+            );
+
+
+
+        /*
+            Get user
+        */
+
+        const user =
+            result.user;
+
+
+
+        console.log(
+            "================================"
+        );
+
+
+        console.log(
+            "GOOGLE LOGIN SUCCESSFUL"
+        );
+
+
+        console.log(
+            "Name:",
+            user.displayName
+        );
+
+
+        console.log(
+            "Email:",
+            user.email
+        );
+
+
+        console.log(
+            "UID:",
+            user.uid
+        );
+
+
+        console.log(
+            "Photo:",
+            user.photoURL
+        );
+
+
+        console.log(
+            "================================"
+        );
+
+
+
+        /*
+            Show success
+        */
+
+        showToast(
+            "Welcome to SkillXChange, " +
+            user.displayName
+        );
+
+        localStorage.setItem("skillUser", JSON.stringify({
+            name: user.displayName,
+            email: user.email,
+            photo: user.photoURL
+        }));
+
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 1000);
+
+
+
+        /*
+            =================================
+            DASHBOARD REDIRECT
+            =================================
+
+            Jab dashboard.html ready ho,
+            neeche wali line uncomment karna:
+
+            window.location.href =
+                "dashboard.html";
+        */
+
+
+    }
+
+
+    catch (error) {
+
+
+        console.error(
+            "Google Login Error:",
+            error
+        );
+
+
+
+        /*
+            USER CLOSED POPUP
+        */
+
+        if (
+            error.code ===
+            "auth/popup-closed-by-user"
+        ) {
+
+            showToast(
+                "Google login was cancelled."
+            );
+
+        }
+
+
+
+        /*
+            MULTIPLE POPUP REQUEST
+        */
+
+        else if (
+            error.code ===
+            "auth/cancelled-popup-request"
+        ) {
+
+            showToast(
+                "Google login is already opening. Please wait."
+            );
+
+        }
+
+
+
+        /*
+            UNAUTHORIZED DOMAIN
+        */
+
+        else if (
+            error.code ===
+            "auth/unauthorized-domain"
+        ) {
+
+            showToast(
+                "This website domain is not authorized in Firebase."
+            );
+
+        }
+
+
+
+        /*
+            OTHER FIREBASE ERROR
+        */
+
+        else {
+
+            showToast(
+                "Google Login Failed."
+            );
+
+
+            console.error(
+                "Firebase error:",
+                error.message
+            );
+
+        }
+
+    }
+
+
+    finally {
+
+
+        /*
+            Reset login state
+        */
+
+        googleLoginInProgress =
+            false;
+
+
+
+        /*
+            Enable buttons again
+        */
+
+        googleButtons.forEach(button => {
+
+            button.disabled = false;
+
+            button.style.opacity = "1";
+
+            button.style.cursor = "pointer";
+
+        });
+
+    }
+
+};
+
+</script>
+
+
+
+
+<iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" tabindex="-1" vspace="0" width="100%" aria-hidden="true" id="I0_1787567652433" name="I0_1787567652433" src="https://skillxchange-a178b.firebaseapp.com/__/auth/iframe?apiKey=AIzaSyCCxKuvUEKoJpjn8P-o7eC8J1b9d-9r_2Q&amp;appName=%5BDEFAULT%5D&amp;v=12.1.0&amp;eid=p&amp;usegapi=1&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.zhTT8Br0Ho8.O%2Fd%3D1%2Frs%3DAHpOoo-7LeULGjNQZRvhdu3G71akb6JY6A%2Fm%3D__features__#id=I0_1787567652433&amp;_gfid=I0_1787567652433&amp;parent=file%3A%2F%2F&amp;pfname=&amp;rpctoken=38075421" style="position: absolute; top: -100px; width: 1px; height: 1px;"></iframe></body>
+</html>
