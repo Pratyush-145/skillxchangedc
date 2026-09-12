@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillXChange — Learn. Share. Grow.</title>
+<meta name="description" content="SkillXChange is a global skill exchange platform where people teach what they know and learn what they want.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg:#050912;
+    --bg-2:#08111f;
+    --surface:rgba(12,20,34,.72);
+    --surface-solid:#0d1727;
+    --gold:#f5c451;
+    --gold-2:#ffdc79;
+    --gold-soft:rgba(245,196,81,.13);
+    --text:#f7f8fb;
+    --muted:#9da7b8;
+    --border:rgba(255,255,255,.10);
+    --border-gold:rgba(245,196,81,.34);
+    --shadow:0 25px 80px rgba(0,0,0,.42);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 80% 8%,rgba(245,196,81,.12),transparent 24%),
+        radial-gradient(circle at 15% 30%,rgba(41,87,145,.18),transparent 28%),
+        linear-gradient(145deg,#03060d 0%,#07101d 48%,#040812 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.24;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:42px 42px;
+    mask-image:linear-gradient(to bottom,black,transparent 80%);
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 40px));margin:auto}
+nav{
+    position:fixed;
+    z-index:20;
+    top:16px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1180px,calc(100% - 32px));
+    height:70px;
+    padding:10px 14px 10px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border:1px solid var(--border);
+    border-radius:22px;
+    background:rgba(4,9,17,.74);
+    backdrop-filter:blur(20px);
+    box-shadow:0 16px 50px rgba(0,0,0,.28);
+}
+.brand{display:flex;align-items:center;gap:12px;font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.5px}
+.brand img{width:42px;height:42px;border-radius:12px;object-fit:cover}
+.brand span{font-size:19px}
+.brand b{color:var(--gold)}
+.navlinks{display:flex;align-items:center;gap:28px;color:#c5ccd8;font-size:14px}
+.navlinks a{transition:.25s}
+.navlinks a:hover{color:var(--gold)}
+.nav-btn{
+    padding:12px 20px;
+    border:1px solid var(--border-gold);
+    border-radius:13px;
+    color:#111;
+    background:linear-gradient(135deg,var(--gold-2),var(--gold));
+    font-weight:800;
+    box-shadow:0 8px 24px rgba(245,196,81,.18);
+}
+.hero{position:relative;padding:150px 0 90px}
+.hero-grid{display:grid;grid-template-columns:1.06fr .94fr;align-items:center;gap:70px}
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:8px 13px;
+    border:1px solid var(--border-gold);
+    border-radius:999px;
+    background:var(--gold-soft);
+    color:var(--gold-2);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px var(--gold)}
+h1{
+    margin-top:24px;
+    max-width:700px;
+    font-family:Manrope,sans-serif;
+    font-size:clamp(45px,6vw,78px);
+    line-height:1.02;
+    letter-spacing:-3.8px;
+}
+h1 span{color:var(--gold);text-shadow:0 0 35px rgba(245,196,81,.18)}
+.hero-copy{margin-top:24px;max-width:640px;color:var(--muted);font-size:18px;line-height:1.75}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:145px;
+    padding:14px 20px;
+    border-radius:14px;
+    font-weight:800;
+    transition:transform .25s,box-shadow .25s,border-color .25s;
+}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{color:#0b0d12;background:linear-gradient(135deg,var(--gold-2),var(--gold));box-shadow:0 14px 35px rgba(245,196,81,.18)}
+.btn-secondary{border:1px solid var(--border);background:rgba(255,255,255,.035);color:#e9edf4}
+.btn-secondary:hover{border-color:var(--border-gold)}
+.hero-note{display:flex;gap:18px;align-items:center;margin-top:24px;color:#7f8a9c;font-size:12px}
+.hero-note i{width:1px;height:18px;background:var(--border)}
+.logo-card{
+    position:relative;
+    width:min(470px,100%);
+    aspect-ratio:1/1;
+    margin-left:auto;
+    border:1px solid var(--border-gold);
+    border-radius:38px;
+    background:
+        radial-gradient(circle at 50% 45%,rgba(245,196,81,.12),transparent 45%),
+        linear-gradient(145deg,rgba(14,28,48,.86),rgba(3,8,15,.9));
+    box-shadow:var(--shadow),0 0 80px rgba(245,196,81,.06);
+    overflow:hidden;
+}
+.logo-card:before{
+    content:"";
+    position:absolute;
+    width:78%;
+    height:78%;
+    left:11%;
+    top:11%;
+    border:1px solid rgba(245,196,81,.18);
+    border-radius:50%;
+}
+.logo-card:after{
+    content:"";
+    position:absolute;
+    width:8px;height:8px;
+    left:50%;top:10%;
+    border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 25px var(--gold);
+}
+.logo-card img{
+    position:absolute;
+    inset:8%;
+    width:84%;
+    height:84%;
+    object-fit:contain;
+    border-radius:28px;
+    filter:drop-shadow(0 25px 35px rgba(0,0,0,.45));
+}
+.floating{
+    position:absolute;
+    z-index:2;
+    padding:12px 15px;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:rgba(7,13,23,.84);
+    backdrop-filter:blur(12px);
+    box-shadow:0 14px 35px rgba(0,0,0,.3);
+    font-size:12px;
+}
+.floating strong{display:block;color:var(--gold);font-size:15px;margin-bottom:2px}
+.f1{left:-20px;top:23%}.f2{right:-22px;bottom:23%}
+.section{padding:105px 0}
+.section-head{max-width:720px;margin-bottom:42px}
+.kicker{color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:800}
+h2{font-family:Manrope,sans-serif;font-size:clamp(31px,4vw,50px);line-height:1.08;letter-spacing:-2px;margin-top:12px}
+.section-head p{color:var(--muted);line-height:1.75;margin-top:16px;font-size:16px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+    padding:28px;
+    min-height:230px;
+    border:1px solid var(--border);
+    border-radius:24px;
+    background:linear-gradient(145deg,rgba(17,29,47,.76),rgba(7,14,25,.78));
+    box-shadow:0 18px 55px rgba(0,0,0,.2);
+    transition:transform .28s,border-color .28s,box-shadow .28s;
+}
+.card:hover{transform:translateY(-7px);border-color:var(--border-gold);box-shadow:0 25px 65px rgba(0,0,0,.34)}
+.icon{
+    width:48px;height:48px;
+    display:grid;place-items:center;
+    border-radius:15px;
+    background:var(--gold-soft);
+    border:1px solid var(--border-gold);
+    color:var(--gold-2);
+    font-size:20px;
+    font-weight:900;
+}
+.card h3{font-family:Manrope,sans-serif;font-size:20px;margin-top:22px}
+.card p{color:var(--muted);line-height:1.7;margin-top:10px;font-size:14px}
+.why{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start}
+.why-panel{
+    padding:34px;
+    border:1px solid var(--border-gold);
+    border-radius:28px;
+    background:
+        radial-gradient(circle at 80% 10%,rgba(245,196,81,.11),transparent 35%),
+        rgba(10,19,32,.72);
+}
+.why-panel .quote{font-family:Manrope,sans-serif;font-size:27px;line-height:1.35}
+.why-panel .quote span{color:var(--gold)}
+.points{display:grid;gap:18px}
+.point{display:grid;grid-template-columns:42px 1fr;gap:15px;align-items:start;padding:20px 0;border-bottom:1px solid var(--border)}
+.point:last-child{border-bottom:0}
+.number{
+    width:38px;height:38px;border-radius:12px;
+    display:grid;place-items:center;
+    color:#111;background:var(--gold);font-weight:900
+}
+.point h3{font-size:17px}.point p{margin-top:5px;color:var(--muted);line-height:1.65;font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.step{position:relative;padding:24px 18px;border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.025)}
+.step b{font-size:12px;color:var(--gold)}
+.step h3{font-size:16px;margin-top:15px;line-height:1.3}
+.step p{font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature{
+    display:flex;gap:15px;align-items:flex-start;
+    padding:22px;border:1px solid var(--border);border-radius:20px;
+    background:rgba(255,255,255,.025)
+}
+.feature .mini{flex:0 0 38px;height:38px;display:grid;place-items:center;border-radius:11px;background:var(--gold-soft);color:var(--gold)}
+.feature h3{font-size:15px}.feature p{color:var(--muted);font-size:13px;line-height:1.55;margin-top:4px}
+.network{
+    position:relative;
+    padding:65px 50px;
+    border:1px solid var(--border-gold);
+    border-radius:34px;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 0%,rgba(245,196,81,.15),transparent 35%),
+        linear-gradient(145deg,rgba(11,24,41,.9),rgba(5,10,18,.92));
+    text-align:center;
+}
+.network h2{max-width:720px;margin:10px auto 0}
+.network p{max-width:700px;margin:17px auto 0;color:var(--muted);line-height:1.75}
+.network .chips{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:25px}
+.chip{padding:9px 13px;border:1px solid var(--border);border-radius:999px;color:#cbd2dd;background:rgba(255,255,255,.035);font-size:12px}
+.cta{
+    padding:100px 0 110px;
+    text-align:center;
+}
+.cta h2{max-width:760px;margin:10px auto 0}
+.cta p{max-width:620px;margin:16px auto 0;color:var(--muted);line-height:1.7}
+.cta .actions{justify-content:center}
+footer{border-top:1px solid var(--border);padding:28px 0 34px;color:#788497;font-size:12px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.footer-brand{color:#dce2eb;font-weight:800}
+.footer-brand b{color:var(--gold)}
+@media(max-width:900px){
+    .navlinks{display:none}
+    .hero-grid,.why{grid-template-columns:1fr}
+    .logo-card{margin:10px auto 0;max-width:470px}
+    .cards,.feature-grid{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+    .container{width:min(100% - 26px,1180px)}
+    nav{width:calc(100% - 20px);top:10px;height:62px;border-radius:18px;padding-left:12px}
+    .brand span{font-size:16px}
+    .brand img{width:37px;height:37px}
+    .nav-btn{padding:10px 14px;font-size:12px}
+    .hero{padding-top:120px}
+    h1{letter-spacing:-2.5px}
+    .hero-copy{font-size:15px}
+    .hero-note{flex-wrap:wrap}
+    .logo-card{border-radius:26px}
+    .f1{left:7px}.f2{right:7px}
+    .section{padding:75px 0}
+    .cards,.feature-grid,.steps{grid-template-columns:1fr}
+    .why-panel{padding:25px}
+    .network{padding:48px 22px;border-radius:26px}
+    .footer-inner{flex-direction:column;align-items:flex-start}
+}
+</style>
+
+<style>
+.hero{
+    position:relative;
+    min-height:780px;
+    padding:150px 0 95px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    isolation:isolate;
+    background:
+        linear-gradient(90deg,rgba(3,8,15,.97) 0%,rgba(3,8,15,.88) 38%,rgba(3,8,15,.38) 68%,rgba(3,8,15,.58) 100%),
+        linear-gradient(180deg,rgba(3,8,15,.18),rgba(3,8,15,.74)),
+        url("hero-background.png") center center/cover no-repeat;
+    border-bottom:1px solid rgba(244,198,83,.13);
+}
+.hero:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:
+        radial-gradient(circle at 76% 40%,rgba(244,198,83,.14),transparent 24%),
+        linear-gradient(180deg,transparent 65%,#050912 100%);
+}
+.hero-grid{
+    position:relative;
+    z-index:1;
+    grid-template-columns:1fr;
+    min-height:570px;
+}
+.hero-grid>div:first-child{
+    max-width:650px;
+    padding:40px 0;
+}
+.hero h1{
+    font-size:clamp(48px,6.4vw,82px);
+    text-shadow:0 10px 35px rgba(0,0,0,.52);
+}
+.hero-copy{
+    color:#d3d8e1;
+    max-width:610px;
+    text-shadow:0 4px 18px rgba(0,0,0,.55);
+}
+.hero-note{color:#c0c7d2}
+.hero .logo-card{
+    position:absolute;
+    width:min(420px,38vw);
+    right:1%;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(4,10,18,.38);
+    border-color:rgba(244,198,83,.22);
+    backdrop-filter:blur(3px);
+    box-shadow:0 25px 80px rgba(0,0,0,.45);
+}
+.hero .logo-card img{opacity:.92}
+@media(max-width:900px){
+    .hero{min-height:720px}
+    .hero .logo-card{
+        width:300px;
+        right:-45px;
+        top:auto;
+        bottom:-55px;
+        transform:none;
+        opacity:.42;
+    }
+}
+@media(max-width:600px){
+    .hero{
+        min-height:700px;
+        padding-top:125px;
+        background-position:center center;
+    }
+    .hero-grid>div:first-child{padding:20px 0}
+    .hero .logo-card{display:none}
+}
+</style>
+
+
+
+
+
+
+
+<style>
+/* Page-load sequence */
+body{opacity:1}
+
+nav{
+    animation:navReveal .8s cubic-bezier(.22,1,.36,1) both;
+}
+
+.hero .eyebrow{
+    opacity:0;
+    animation:heroItem .8s cubic-bezier(.22,1,.36,1) .35s forwards;
+}
+
+.hero h1{
+    opacity:0;
+    animation:heroItem .9s cubic-bezier(.22,1,.36,1) .48s forwards;
+}
+
+.hero .hero-copy{
+    opacity:0;
+    animation:heroItem .9s cubic-bezier(.22,1,.36,1) .62s forwards;
+}
+
+.hero .actions{
+    opacity:0;
+    animation:heroItem .9s cubic-bezier(.22,1,.36,1) .76s forwards;
+}
+
+.hero .hero-note{
+    opacity:0;
+    animation:heroItem .9s cubic-bezier(.22,1,.36,1) .9s forwards;
+}
+
+/* Scroll reveal */
+.scroll-reveal{
+    opacity:0;
+    transform:translateY(55px);
+    transition:
+        opacity .85s cubic-bezier(.22,1,.36,1),
+        transform .85s cubic-bezier(.22,1,.36,1);
+}
+
+.scroll-reveal.from-left{
+    transform:translateX(-55px);
+}
+
+.scroll-reveal.from-right{
+    transform:translateX(55px);
+}
+
+.scroll-reveal.show{
+    opacity:1;
+    transform:translate(0,0);
+}
+
+/* Staggered cards */
+.stagger-item{
+    opacity:0;
+    transform:translateY(35px);
+    transition:
+        opacity .7s cubic-bezier(.22,1,.36,1),
+        transform .7s cubic-bezier(.22,1,.36,1);
+}
+
+.stagger-item.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Elegant hover effects */
+.card,.step,.feature,.chip,.network,.why-panel{
+    transition:
+        transform .35s cubic-bezier(.22,1,.36,1),
+        border-color .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:var(--border-gold);
+    box-shadow:0 28px 70px rgba(0,0,0,.34);
+}
+
+.step:hover,.feature:hover{
+    transform:translateY(-7px);
+    border-color:var(--border-gold);
+    box-shadow:0 22px 55px rgba(0,0,0,.28);
+}
+
+.why-panel:hover,.network:hover{
+    transform:translateY(-6px);
+    box-shadow:0 28px 75px rgba(0,0,0,.34);
+}
+
+.card .icon,.feature .mini,.point .number{
+    transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s ease;
+}
+
+.card:hover .icon,.feature:hover .mini,.point:hover .number{
+    transform:scale(1.08);
+    box-shadow:0 0 24px rgba(245,196,81,.22);
+}
+
+.btn,.nav-btn{
+    transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease;
+}
+
+.btn:hover,.nav-btn:hover{
+    transform:translateY(-3px);
+}
+
+.navlinks a{
+    position:relative;
+}
+
+.navlinks a:after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:100%;
+    bottom:-7px;
+    height:1px;
+    background:var(--gold);
+    box-shadow:0 0 10px rgba(245,196,81,.7);
+    transition:right .3s ease;
+}
+
+.navlinks a:hover:after{
+    right:0;
+}
+
+.brand img{
+    transition:transform .4s cubic-bezier(.22,1,.36,1),filter .4s ease;
+}
+
+.brand:hover img{
+    transform:scale(1.08);
+    filter:drop-shadow(0 0 14px rgba(245,196,81,.35));
+}
+
+.chip:hover{
+    transform:translateY(-4px);
+    border-color:var(--border-gold);
+    color:var(--gold-2);
+    background:var(--gold-soft);
+}
+
+.cta{
+    position:relative;
+    overflow:hidden;
+}
+
+.cta:before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    left:50%;
+    top:55%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(245,196,81,.075),transparent 68%);
+    animation:softPulse 5s ease-in-out infinite;
+    pointer-events:none;
+}
+
+.cta .container{
+    position:relative;
+    z-index:1;
+}
+
+@keyframes navReveal{
+    from{opacity:0;transform:translateX(-50%) translateY(-35px) scale(.97)}
+    to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}
+}
+
+@keyframes heroItem{
+    from{opacity:0;transform:translateY(30px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes softPulse{
+    0%,100%{opacity:.35;transform:translate(-50%,-50%) scale(.9)}
+    50%{opacity:.8;transform:translate(-50%,-50%) scale(1.08)}
+}
+
+@media(max-width:600px){
+    .scroll-reveal.from-left,.scroll-reveal.from-right{
+        transform:translateY(35px);
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,*:before,*:after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.01ms!important;
+        scroll-behavior:auto!important;
+    }
+}
+</style>
+<style>
+.hero{
+ position:relative!important; min-height:780px!important; padding:150px 0 95px!important;
+ display:flex!important; align-items:center!important; overflow:hidden!important;
+ isolation:isolate!important; background:#050912!important;
+}
+.hero-carousel{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;animation:heroFade 15s infinite;transform:scale(1.02)}
+.hero-slide:nth-child(1){
+    animation-delay:1s;
+    background-image:url("Carosoul-1.png")}
+.hero-slide:nth-child(2){animation-delay:6s;background-image:url("Carosoul-2.png")}
+.hero-slide:nth-child(3){animation-delay:12s;background-image:url("Carosoul-3.png")}
+.hero-carousel:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,8,15,.96) 0%,rgba(3,8,15,.84) 37%,rgba(3,8,15,.40) 68%,rgba(3,8,15,.56) 100%),linear-gradient(180deg,rgba(3,8,15,.15),rgba(3,8,15,.82));}
+@keyframes heroFade{0%,31%{opacity:1}36%,97%{opacity:0}100%{opacity:1}}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 76% 40%,rgba(244,198,83,.12),transparent 25%);pointer-events:none}
+@media(max-width:900px){.hero-carousel:after{background:linear-gradient(90deg,rgba(3,8,15,.93),rgba(3,8,15,.60)),linear-gradient(180deg,rgba(3,8,15,.15),rgba(3,8,15,.84))}}
+@media(max-width:600px){.hero{min-height:700px!important;padding-top:125px!important}}
+</style>
+</head>
+<body>
+<nav>
+    <a href="#" class="brand">
+        <img src="skillxchange-logo.png" alt="SkillXChange logo">
+        <span>Skill<b>X</b>Change</span>
+    </a>
+    <div class="navlinks">
+        <a href="#about">What is it?</a>
+        <a href="#why">Why it matters</a>
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+    </div>
+    <a href="login.html" class="nav-btn">Login</a>
+</nav>
+
+<main>
+<section class="hero">
+    <div class="hero-carousel" aria-hidden="true"><div class="hero-slide"></div><div class="hero-slide"></div><div class="hero-slide"></div></div>
+    <div class="container hero-grid">
+        <div>
+            <div class="eyebrow"><span class="dot"></span> Global skill exchange platform</div>
+            <h1>Learn from others.<br>Share what you <span>know.</span></h1>
+            <p class="hero-copy">SkillXChange connects people who have skills to share with people who want to learn. Turn knowledge into meaningful exchanges and grow together.</p>
+            <div class="actions">
+                <a href="login.html" class="btn btn-primary">Get Started →</a>
+                <a href="#about" class="btn btn-secondary">Explore SkillXChange</a>
+            </div>
+            <div class="hero-note">
+                <span>Teach what you know</span><i></i><span>Learn what you need</span><i></i><span>Grow together</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section" id="about">
+    <div class="container">
+        <div class="section-head">
+            <div class="kicker">01 — The idea</div>
+            <h2>What is SkillXChange?</h2>
+            <p>It is a two-way learning community built around the simple idea that everyone knows something worth sharing.</p>
+        </div>
+        <div class="cards">
+            <article class="card">
+                <div class="icon">↔</div>
+                <h3>Two-Way Learning</h3>
+                <p>Share the skills you can teach while discovering the skills you want to learn. Learning becomes an exchange instead of a one-way process.</p>
+            </article>
+            <article class="card">
+                <div class="icon">◎</div>
+                <h3>Meaningful Connections</h3>
+                <p>Find people whose skills and learning goals complement yours and create useful, collaborative connections.</p>
+            </article>
+            <article class="card">
+                <div class="icon">↗</div>
+                <h3>Global Skill Network</h3>
+                <p>Discover mentors, learners and exchange partners across countries, languages and time zones.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="why">
+    <div class="container why">
+        <div class="why-panel">
+            <div class="kicker">02 — Why it matters</div>
+            <div class="quote">Your knowledge has value. Someone else may have the exact knowledge <span>you need.</span></div>
+            <div class="actions">
+                <a href="login.html" class="btn btn-primary">Start Exchanging →</a>
+            </div>
+        </div>
+        <div class="points">
+            <div class="point">
+                <div class="number">01</div>
+                <div><h3>Everyone has something to share</h3><p>Your skills, experience and interests can help another learner move forward.</p></div>
+            </div>
+            <div class="point">
+                <div class="number">02</div>
+                <div><h3>Learn what you actually want</h3><p>Tell SkillXChange what you want to learn and discover people who can help you.</p></div>
+            </div>
+            <div class="point">
+                <div class="number">03</div>
+                <div><h3>Turn learning into collaboration</h3><p>Instead of simply consuming content, connect, communicate and build exchanges with real people.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="how">
+    <div class="container">
+        <div class="section-head">
+            <div class="kicker">03 — The process</div>
+            <h2>How does it work?</h2>
+            <p>A simple flow takes you from your skills to a meaningful learning exchange.</p>
+        </div>
+        <div class="steps">
+            <div class="step"><b>STEP 01</b><h3>Add what you can teach</h3><p>Tell the community what you can confidently share.</p></div>
+            <div class="step"><b>STEP 02</b><h3>Add what you want to learn</h3><p>Choose the skills you want to improve or discover.</p></div>
+            <div class="step"><b>STEP 03</b><h3>Discover people</h3><p>Explore skills and find compatible learners or mentors.</p></div>
+            <div class="step"><b>STEP 04</b><h3>Start a conversation</h3><p>Connect through messages and discuss the exchange.</p></div>
+            <div class="step"><b>STEP 05</b><h3>Create an exchange</h3><p>Teach, learn and grow together.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="features">
+    <div class="container">
+        <div class="section-head">
+            <div class="kicker">04 — Inside the platform</div>
+            <h2>Everything you need to exchange skills.</h2>
+            <p>The dashboard brings your skills, learning goals, connections and exchanges together in one place.</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature"><div class="mini">✦</div><div><h3>My Skills</h3><p>Add skills you can share and skills you want to learn.</p></div></div>
+            <div class="feature"><div class="mini">⌕</div><div><h3>Find Skills</h3><p>Search for skills and discover people in the network.</p></div></div>
+            <div class="feature"><div class="mini">⌁</div><div><h3>Matches</h3><p>Find compatible exchanges based on teaching and learning goals.</p></div></div>
+            <div class="feature"><div class="mini">↔</div><div><h3>Exchanges</h3><p>Keep track of the learning exchanges you create.</p></div></div>
+            <div class="feature"><div class="mini">◌</div><div><h3>Messages</h3><p>Communicate with learners, mentors and exchange partners.</p></div></div>
+            <div class="feature"><div class="mini">AI</div><div><h3>SkillXChange Guide</h3><p>Use the personal skill assistant for ideas, matches and guidance.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="network">
+            <div class="kicker">05 — One connected community</div>
+            <h2>Learn from people around the world.</h2>
+            <p>Discover mentors, learners and exchange partners across countries, languages and time zones — all through a platform built for two-way growth.</p>
+            <div class="chips">
+                <span class="chip">Mentors</span>
+                <span class="chip">Learners</span>
+                <span class="chip">Exchange Partners</span>
+                <span class="chip">Skills</span>
+                <span class="chip">Messages</span>
+                <span class="chip">Global Network</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="container">
+        <div class="kicker">READY TO GROW?</div>
+        <h2>Learn. Share. Grow.<br>One skill at a time.</h2>
+        <p>Join SkillXChange and turn the skills you have into opportunities to learn something new.</p>
+        <div class="actions">
+            <a href="login.html" class="btn btn-primary">Enter SkillXChange →</a>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer>
+    <div class="container footer-inner">
+        <div class="footer-brand">Skill<b>X</b>Change</div>
+        <div>Learn. Share. Grow. · A global skill exchange platform</div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const items=document.querySelectorAll(".section-head,.cards .card,.why-panel,.points .point,.steps .step,.feature-grid .feature,.network,.cta .kicker,.cta h2,.cta p,.cta .actions,footer");
+items.forEach((el,i)=>{
+el.classList.add(i%3===0?"reveal-left":i%3===1?"reveal":"reveal-right");
+el.style.transitionDelay=`${Math.min((i%5)*70,280)}ms`;
+});
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}
+});
+},{threshold:.12,rootMargin:"0px 0px -50px 0px"});
+document.querySelectorAll(".reveal,.reveal-left,.reveal-right").forEach(el=>observer.observe(el));
+document.querySelectorAll(".card,.step,.feature,.chip,.network,.why-panel").forEach(el=>{
+el.addEventListener("mousemove",e=>{
+if(innerWidth<900)return;
+const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+el.style.transform=`translateY(-5px) rotateX(${(-y*2).toFixed(2)}deg) rotateY(${(x*2).toFixed(2)}deg)`;
+});
+el.addEventListener("mouseleave",()=>el.style.transform="");
+});
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+    const sections=document.querySelectorAll(
+        ".section-head,.why-panel,.network,.cta .kicker,.cta h2,.cta p,.cta .actions"
+    );
+
+    sections.forEach((el,i)=>{
+        el.classList.add("scroll-reveal");
+        if(i%3===1) el.classList.add("from-left");
+        if(i%3===2) el.classList.add("from-right");
+    });
+
+    document.querySelectorAll(".cards .card,.points .point,.steps .step,.feature-grid .feature").forEach((el,i)=>{
+        el.classList.add("stagger-item");
+        el.style.transitionDelay=(i%5)*90+"ms";
+    });
+
+    const observer=new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
+            }
+        });
+    },{
+        threshold:.14,
+        rootMargin:"0px 0px -70px 0px"
+    });
+
+    document.querySelectorAll(".scroll-reveal,.stagger-item").forEach(el=>{
+        observer.observe(el);
+    });
+});
+</script>
+
+</body>
+</html>
